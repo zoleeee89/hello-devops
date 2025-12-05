@@ -1,0 +1,8 @@
+hello-devops/
+├─ app.py
+├─ requirements.txt
+├─ README.md
+├─ Dockerfile
+└─ .github/
+   └─ workflows/
+      └─ ci.yml
