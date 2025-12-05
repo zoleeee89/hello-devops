@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello DevOps! Ez már a feature/update-message branch módosított üzenete."
+    return "Hello DevOps! Ez már a feature/update-message branch módosított üzenete. "
 
 
 if __name__ == "__main__":
