@@ -1,4 +1,4 @@
-name: CI
+name: CI - build and push Docker image
 
 on:
   push:
@@ -9,8 +9,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
-  build-and-check:
+  build-test-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +31,17 @@ jobs:
 
       - name: Syntax check
         run: python -m compileall .
+
+      - name: Log in to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build Docker image
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/hello-devops:latest
+          docker build -t $IMAGE_NAME .
+
+      - name: Push Docker image
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/hello-devops:latest
+          docker push $IMAGE_NAME
