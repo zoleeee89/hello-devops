@@ -31,4 +31,5 @@ Az alkalmazás HTTP-n elérhető, és egy egyszerű szöveget ad vissza a `http:
    # Linux / macOS:
    source venv/bin/activate
 
-Ez a sor a feature/update-message branch-en lett hozzáadva.
+ 
+Ez a sor a feature/update-message branch-en lett hozzáadva_.
